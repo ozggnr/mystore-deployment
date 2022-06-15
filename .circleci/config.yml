@@ -16,7 +16,7 @@ jobs:
           node-version: '16.14.2'         
       - checkout
       - aws-cli/setup
-      - aws-elastic-beanstalk/setup
+      - eb/setup
       - run:
           name: Install Front-End Dependencies
           command: npm run frontend:install   
