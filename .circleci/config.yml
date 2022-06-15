@@ -7,7 +7,6 @@ orbs:
   # different jobs are calles later in the workflows sections
 jobs:
   build:
-    executer: aws-cli/default
     docker:
       # the base image can run most needed actions with orbs
       - image: "cimg/node:16.14.2"
