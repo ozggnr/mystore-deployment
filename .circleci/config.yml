@@ -19,47 +19,56 @@ jobs:
       - eb/setup
       - run:
           name: Install Front-End Dependencies
-          command: npm run frontend:install   
+          command: |
+            npm run frontend:install   
       # - run:
       #     name: Front-End Start
       #     command: npm run frontend:start
-      # - run:
-      #     name: Front-End Build
-      #     command: npm run frontend:build
+      - run:
+          name: Front-End Build
+          command: |
+            npm run frontend:build
       - run:
           name: Front-End Test
-          command: npm run frontend:test
+          command: |
+            npm run frontend:test
       - run:
           name: Front-End Test E2E
-          command: npm run frontend:e2e
+          command: |
+            npm run frontend:e2e
       - run:
           name: Front-End Lint
-          command: npm run frontend:lint
+          command: |
+            npm run frontend:lint
       - run:
           name: Front-End Deploy
-          command: npm run frontend:deploy     
+          command: |
+            npm run frontend:deploy     
       - run:
           name: Install API Dependencies
-          command: npm run api:install
+          command: |
+            npm run api:install
       - run:
           name: API Build
-          command: npm run api:build
+          command: |
+            npm run api:build
       # - run:
       #     name: API Start
       #     command: npm run api:start
-      # - run:
-      #     name: API Deploy
-      #     command: npm run api:deploy
-  # deploy step will run only after manual approval
-  deploy:
-    docker:
-      - image: "cimg/base:stable"
-    steps:
-      - node/install:
-          node-version: '16.14.2' 
-      - eb/setup
-      - aws-cli/setup
-      - checkout
       - run:
-          name: Deploy App
-          command: npm run deploy
+          name: API Deploy
+          command: |
+            npm run api:deploy
+  # deploy step will run only after manual approval
+  # deploy:
+  #   docker:
+  #     - image: "cimg/base:stable"
+  #   steps:
+  #     - node/install:
+  #         node-version: '16.14.2' 
+  #     - eb/setup
+  #     - aws-cli/setup
+  #     - checkout
+  #     - run:
+  #         name: Deploy App
+  #         command: npm run deploy
