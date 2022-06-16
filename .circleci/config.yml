@@ -56,11 +56,16 @@ jobs:
           name: API Deploy
           command: |
             npm run api:deploy
-
+            
 workflows:
   udagram:
     jobs:
-      - build:
+      - build
+      - hold:
           filters:
             branches:
-              only: master
+              only:
+                - master
+          type: approval
+          requires:
+            - build
