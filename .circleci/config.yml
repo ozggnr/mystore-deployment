@@ -56,16 +56,10 @@ jobs:
           name: API Deploy
           command: |
             npm run api:deploy
-  # deploy step will run only after manual approval
-  # deploy:
-  #   docker:
-  #     - image: "cimg/base:stable"
-  #   steps:
-  #     - node/install:
-  #         node-version: '16.14.2' 
-  #     - eb/setup
-  #     - aws-cli/setup
-  #     - checkout
-  #     - run:
-  #         name: Deploy App
-  #         command: npm run deploy
+
+workflows:
+  jobs
+    - build:
+      filters:
+        branches:
+          only: master
