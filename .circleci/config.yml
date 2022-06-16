@@ -58,9 +58,9 @@ jobs:
             npm run api:deploy
 
 workflows:
-  jobs:
-    - build
-      filters:
-        branches:
-          only: 
-            - master
+  pipeline:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master
